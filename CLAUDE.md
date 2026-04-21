@@ -15,29 +15,42 @@ npm run preview   # preview the production build locally
 
 ## Architecture
 
-Single-page portfolio site — **Vite + React**, no routing, no state management library.
+Single-page personal portfolio — **Vite + React**, no routing, no state management library.
 
 ### Entry points
 - `index.html` → `src/main.jsx` → `src/App.jsx`
 - Styles: `src/index.css` (global reset + CSS custom properties) and `src/App.css` (all component styles)
 
-### Scroll-driven color wave (`src/App.jsx`)
-The core visual effect lives in the `useEffect` inside `App`. It works like this:
+### Layout
 
-1. `SECTIONS` array at the top of the file defines `{ id, bg, accent }` for each section — these are the color stops.
-2. On scroll, the viewport midpoint (`scrollY + innerHeight * 0.5`) is compared against cached section positions.
-3. A `t` value (0→1) is computed for how far through the current section the midpoint is.
-4. `lerpRgb` interpolates between the current and next section's `bg` and `accent` hex colors.
-5. Results are applied directly to `pill.style.backgroundColor`, `pill.style.boxShadow`, and two CSS custom properties: `--accent` and `--accent-rgb`.
+The site is a single centered card (`max-width: 760px`) floating on a dark background (`#0d1117`). It has two parts:
 
-All accent-colored elements (dots, labels, tags, gradients, btn backgrounds) consume `var(--accent)` and `var(--accent-rgb)` from `:root`, so they update automatically without per-component JS.
+1. **Card face** — a `450px`-tall split: info on the left, profile photo on the right. On mobile (`≤600px`) it switches to `flex-direction: column-reverse` so the photo sits on top and info below, both vertically centered on screen.
 
-**To change the color palette:** edit the `SECTIONS` array at the top of `App.jsx`. Each entry maps to a `<section id="...">` in the JSX below.
+2. **Collapsible drawer** — a tab at the bottom of the card labeled "About & Skills". Clicking it animates open (CSS `grid-template-rows: 0fr → 1fr` trick) to reveal a bio, client list, and skill tags.
 
-### Sections
-All five sections are defined as plain functions at the bottom of `App.jsx` — `Hero`, `About`, `Experience`, `Skills`, `Contact`. They are not in separate files by design (single-page, no routing needed).
+### Key data in `App.jsx`
+- `LINKS` — array of `{ label, href, icon }` for the 6 social icon buttons (GitHub, Behance, Phone, Email, X, WhatsApp). Icons are inline SVG.
+- `SKILLS` — array of skill tag strings shown in the drawer.
+- `CLIENTS` — array of notable client names shown in the drawer.
+
+### CSS variables (`src/index.css`)
+| Variable | Value | Used for |
+|---|---|---|
+| `--accent` | `#00e5a0` | Mint green accent color |
+| `--accent-rgb` | `0, 229, 160` | Same, for `rgba()` usage |
+| `--text` | `#f0ede8` | Off-white text |
+| `--text-rgb` | `240, 237, 232` | Same, for `rgba()` usage |
+| `--bg` | `#0d1117` | Page background |
+| `--font` | Space Grotesk | Body font |
+| `--mono` | Space Mono | Eyebrow / label font |
+
+Fonts are loaded via Google Fonts `@import` in `index.css`.
+
+### Profile photo
+Served from `public/profile_650.jpg` → available at `/profile_650.jpg` at runtime.
 
 ### Deployment
-Pushing to `main` triggers `.github/workflows/deploy.yml`, which runs `npm ci && npm run build` and deploys `dist/` to GitHub Pages via the Actions environment. `public/CNAME` contains `taftera.dev` so the custom domain is preserved after every deploy.
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which runs `npm ci && npm run build` and deploys `dist/` to GitHub Pages. `public/CNAME` contains `taftera.dev` so the custom domain is preserved after every deploy.
 
 **First-time GitHub Pages setup:** repo Settings → Pages → Source → **GitHub Actions**.

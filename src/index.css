@@ -5,23 +5,22 @@
 }
 
 :root {
-  --accent:     #F2E7DC;
-  --accent-rgb: 242, 231, 220;
-  --text:       #F2E7DC;
-  --text-rgb:   242, 231, 220;
-  --invert-text: #027373;
-  --font: 'Space Grotesk', sans-serif;
-  --mono: 'Space Mono', monospace;
+  --accent:     #00e5a0;
+  --accent-rgb: 0, 229, 160;
+  --text:       #f0ede8;
+  --text-rgb:   240, 237, 232;
+  --bg:         #0d1117;
+  --font:       'Space Grotesk', sans-serif;
+  --mono:       'Space Mono', monospace;
 }
 
-html {
-  scroll-behavior: smooth;
+html, body, #root {
+  height: 100%;
 }
 
 body {
-  background-color: #027373;
+  background: var(--bg);
   font-family: var(--font);
   color: var(--text);
-  min-height: 100vh;
   -webkit-font-smoothing: antialiased;
 }
