@@ -24,7 +24,14 @@ const LINKS = [
     label: 'Phone',
     href: 'tel:+5215551044492',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
         <line x1="12" y1="18" x2="12.01" y2="18" />
       </svg>
@@ -34,7 +41,14 @@ const LINKS = [
     label: 'Email',
     href: 'mailto:a.turati@gmail.com',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <rect x="2" y="4" width="20" height="16" rx="2" />
         <polyline points="2,4 12,13 22,4" />
       </svg>
@@ -60,8 +74,23 @@ const LINKS = [
   },
 ];
 
-const SKILLS = ['Shopify', 'React', 'Next.js', 'Tailwind CSS', 'JavaScript', 'Figma', 'Klaviyo', 'Git'];
-const CLIENTS = ['Beast Industries', 'Team Liquid', 'ADD PB+J', 'Graybox', 'Grand Vision NV'];
+const SKILLS = [
+  'Shopify',
+  'React',
+  'Next.js',
+  'Tailwind CSS',
+  'JavaScript',
+  'Figma',
+  'Klaviyo',
+  'Git',
+];
+const CLIENTS = [
+  'Beast Industries',
+  'Team Liquid',
+  'ADD PB+J',
+  'Graybox',
+  'Grand Vision NV',
+];
 
 export default function App() {
   const [open, setOpen] = useState(false);
@@ -69,7 +98,6 @@ export default function App() {
   return (
     <div className="stage">
       <div className="card">
-
         {/* ── Main face ── */}
         <div className="card-face">
           <div className="card-info">
@@ -87,7 +115,11 @@ export default function App() {
                   href={l.href}
                   className="link-icon"
                   target={l.href.startsWith('http') ? '_blank' : undefined}
-                  rel={l.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  rel={
+                    l.href.startsWith('http')
+                      ? 'noopener noreferrer'
+                      : undefined
+                  }
                   aria-label={l.label}
                 >
                   {l.icon}
@@ -96,7 +128,11 @@ export default function App() {
             </nav>
           </div>
           <div className="card-photo">
-            <img src={`${import.meta.env.BASE_URL}profile_650.jpg`} alt="Alex Turati Schnaider" className="photo" />
+            <img
+              src={`${import.meta.env.BASE_URL}alex-turati_profile_700.jpg`}
+              alt="Alex Turati Schnaider"
+              className="photo"
+            />
           </div>
         </div>
 
@@ -112,34 +148,46 @@ export default function App() {
             viewBox="0 0 16 16"
             fill="none"
           >
-            <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M4 6l4 4 4-4"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
 
         <div className={`drawer${open ? '' : ' drawer--closed'}`}>
           <div className="drawer-inner">
             <p className="drawer-bio">
-              Senior Shopify Developer and Technical Lead with 10+ years building
-              high-performance e-commerce for global brands across fashion,
-              entertainment, and DTC. Trusted by MrBeast and Team Liquid.
+              Senior Shopify Developer and Technical Lead with 10+ years
+              building high-performance e-commerce for global brands across
+              fashion, entertainment, and DTC. Trusted by MrBeast and Team
+              Liquid.
             </p>
             <div className="drawer-row">
               <div className="drawer-col">
                 <p className="drawer-heading">Clients</p>
                 <ul className="drawer-list">
-                  {CLIENTS.map((c) => <li key={c}>{c}</li>)}
+                  {CLIENTS.map((c) => (
+                    <li key={c}>{c}</li>
+                  ))}
                 </ul>
               </div>
               <div className="drawer-col">
                 <p className="drawer-heading">Skills</p>
                 <div className="tags">
-                  {SKILLS.map((s) => <span className="tag" key={s}>{s}</span>)}
+                  {SKILLS.map((s) => (
+                    <span className="tag" key={s}>
+                      {s}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );
