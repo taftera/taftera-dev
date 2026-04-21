@@ -96,7 +96,7 @@ export default function App() {
             </nav>
           </div>
           <div className="card-photo">
-            <img src="/profile_650.jpg" alt="Alex Turati Schnaider" className="photo" />
+            <img src={`${import.meta.env.BASE_URL}profile_650.jpg`} alt="Alex Turati Schnaider" className="photo" />
           </div>
         </div>
 
