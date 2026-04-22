@@ -76,20 +76,24 @@ const LINKS = [
 
 const SKILLS = [
   'Shopify',
+  'JavaScript',
   'React',
   'Next.js',
+  'TypeScript',
+  'Remix',
+  'GraphQL',
+  'Python',
   'Tailwind CSS',
-  'JavaScript',
-  'Figma',
-  'Klaviyo',
   'Git',
+  'Klaviyo',
+  'Figma',
 ];
 const CLIENTS = [
-  'Beast Industries',
-  'Team Liquid',
-  'ADD PB+J',
-  'Graybox',
-  'Grand Vision NV',
+  'Beast Industries (USA)',
+  'Team Liquid (USA)',
+  'ADD PB+J (CA)',
+  'Graybox (USA)',
+  'Grand Vision NV (BE/MX)',
 ];
 
 export default function App() {
@@ -107,7 +111,7 @@ export default function App() {
               <br />
               Schnaider
             </h1>
-            <p className="title">Ecommerce Developer</p>
+            <p className="title">Sr. Ecommerce Developer</p>
             <nav className="links" aria-label="Social links">
               {LINKS.map((l) => (
                 <a
